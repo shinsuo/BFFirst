@@ -21,28 +21,33 @@
     if (self = [super initWithTotalParticles:numberOfParticles]) {
         
         self.duration = kCCParticleDurationInfinity;
-        self.emitterMode = kCCParticleModeGravity;
+        self.emitterMode = kCCParticleModeRadius;
         
         if (self.emitterMode == kCCParticleModeGravity) {
-            self.sourcePosition = ccp(-15, 0);
+            self.sourcePosition = ccp(0, 0);
             self.gravity = ccp(-50, -90);
-            self.radialAccel = -90;
+            self.radialAccel = 90;
             self.radialAccelVar = 20;
             self.speed = 15;
             self.speedVar = 4;
-            self.tangentialAccel = 120;
+            self.tangentialAccel = -120;
             self.tangentialAccelVar = 10;
         }else if (self.emitterMode == kCCParticleModeRadius) {
-            
+            self.startRadius = -200;
+            self.startRadiusVar = 0;
+            self.endRadius = -100;
+            self.endRadiusVar = 0;
+            self.rotatePerSecond = 180;
+            self.rotatePerSecondVar = 0;
         }
         
-        self.position = CGPointZero;
+        self.position = ccp(100, 100);
         self.posVar = CGPointZero;
-        self.positionType = kCCPositionTypeFree;
+        self.positionType = kCCPositionTypeGrouped;
         
         self.startSize = 40.0f;
         self.startSizeVar = 0.0f;
-        self.endSize = kCCParticleStartSizeEqualToEndSize;
+        self.endSize = 20;//kCCParticleStartSizeEqualToEndSize;
         self.endSizeVar = 0;
         
         self.angle = 0;

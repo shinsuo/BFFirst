@@ -41,12 +41,11 @@
 		// ask director the the window size
 		CGSize size = [[CCDirector sharedDirector] winSize];
 
+        CCSprite *sprite = [CCSprite spriteWithFile:@"Icon-Small.png"];
+        sprite.position = CGPointMake(size.width/2, size.height/2);
+        [self addChild:sprite];
         
-        
-        BFParticleFirst *bfParticleFirst = [BFParticleFirst node];
-        bfParticleFirst.position = CGPointMake(size.width/2, size.height/2);
-        [self addChild:bfParticleFirst];
-
+        self.isTouchEnabled = YES;
 	}
 	return self;
 }
@@ -61,4 +60,13 @@
 	// don't forget to call "super dealloc"
 	[super dealloc];
 }
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    BFParticleFirst *bf = [BFParticleFirst node];
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    bf.position = CGPointMake(size.width/2, size.height/2);
+    [self addChild:bf];
+}
+
 @end
